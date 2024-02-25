@@ -10,7 +10,7 @@ cardano-cli transaction build \
   $PREVIEW \
   --tx-in $utxoin \
   --tx-out $address+$output \
-  --tx-out-datum-hash-file unit.json \
+  --tx-out-datum-hash-file value22.json \
   --change-address $nami \
   --protocol-params-file protocol.params \
   --out-file give.unsigned

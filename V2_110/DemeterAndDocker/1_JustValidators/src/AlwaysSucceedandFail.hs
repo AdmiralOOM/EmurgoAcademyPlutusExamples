@@ -35,6 +35,12 @@ datum22 datum _ _
  | datum == mkI 22     = ()
  | otherwise           = error ()
 
+ {-# INLINABLE datumEqredeemer #-}
+datumEqredeemer :: BuiltinData -> BuiltinData -> BuiltinData -> ()
+datumEqredeemer datum redeemer _ 
+ | redeemer == mkI 11  = ()
+ | otherwise           = error ()
+
 
 alwaysSucceedsValidator :: Validator
 alwaysSucceedsValidator = mkValidatorScript $$(PlutusTx.compile [|| alwaysSucceeds ||])  
@@ -52,7 +58,7 @@ datum22Validator = mkValidatorScript $$(PlutusTx.compile [|| datum22 ||])
 {- Serialised Scripts and Values -}
 
 saveAlwaysSucceeds :: IO ()
-saveAlwaysSucceeds =  writeValidatorToFile "./testnet/alwaysSucceeds.plutus" alwaysSucceedsValidator
+saveAlwaysSucceeds =  writeValidatorToFile "./testnet/alwaysSucceeds.uplc" alwaysSucceedsValidator
 
 saveAlwaysFails :: IO ()
 saveAlwaysFails =  writeValidatorToFile "./testnet/alwaysFails.plutus" alwaysFailsValidator
